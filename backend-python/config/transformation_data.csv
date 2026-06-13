@@ -1,0 +1,51 @@
+rule_type,source_label,source_value,target_field,target_value,notes
+source_detection,Document Brand,BrightKids,header.customer_code,BRIGHT,Identify the customer from the document branding/header.
+source_detection,Document Brand,ThreadHaven,header.customer_code,GEORGE,George-range POs are issued under the ThreadHaven header.
+source_detection,Document Brand,Raj International Sourcing,header.customer_code,RAJ,Raj International Sourcing POs (Seller = Raj Limited).
+source_detection,Document Brand,Tesco,header.customer_code,TESCO,Original sample customer.
+header_default,Action,*,header.action,NEW,Default action for a newly received PO.
+division_lookup,Customer,BRIGHT,header.div_code,BKD,Division code is not printed on the PO; resolve from the customer.
+division_lookup,Customer,GEORGE,header.div_code,KAE,
+division_lookup,Customer,RAJ,header.div_code,RJI,
+division_lookup,Customer,TESCO,header.div_code,KAE,
+vendor_lookup,Vendor No,07821490,suppliers.vendor_code,BKDS01,BrightKids vendor.
+vendor_lookup,Vendor No,07821490,suppliers.vendor_name,BrightKids Sourcing Ltd,
+vendor_lookup,Vendor No,07821490,suppliers.vendor_currency,USD,
+vendor_lookup,Vendor No,07821490,suppliers.vendor_inc_code,FOB,
+vendor_lookup,Vendor No,07821490,suppliers.vendor_incoterm,FREE ON BOARD,
+vendor_lookup,Vendor No,05344742,suppliers.vendor_code,THVN42,ThreadHaven vendor (PO 1208545).
+vendor_lookup,Vendor No,05344742,suppliers.vendor_name,ThreadHaven Mills,
+vendor_lookup,Vendor No,05344742,suppliers.vendor_currency,USD,
+vendor_lookup,Vendor No,05344742,suppliers.vendor_inc_code,FOB,
+vendor_lookup,Vendor No,05344742,suppliers.vendor_incoterm,FREE ON BOARD,
+vendor_lookup,Vendor No,05344746,suppliers.vendor_code,THVN46,ThreadHaven vendor (PO 1208546).
+vendor_lookup,Vendor No,05344746,suppliers.vendor_name,ThreadHaven Knits,
+vendor_lookup,Vendor No,05344746,suppliers.vendor_currency,USD,
+vendor_lookup,Vendor No,05344746,suppliers.vendor_inc_code,FOB,
+vendor_lookup,Vendor No,05344746,suppliers.vendor_incoterm,FREE ON BOARD,
+vendor_lookup,Supplier No,1007679,suppliers.vendor_code,RAJLTD,Raj seller/supplier.
+vendor_lookup,Supplier No,1007679,suppliers.vendor_name,Raj Limited,
+vendor_lookup,Supplier No,1007679,suppliers.vendor_currency,USD,
+vendor_lookup,Supplier No,1007679,suppliers.vendor_inc_code,FOB,
+vendor_lookup,Supplier No,1007679,suppliers.vendor_incoterm,FREE ON BOARD,
+vendor_lookup,Supplier No,1008260,suppliers.vendor_code,CENPTE,Original sample supplier.
+vendor_lookup,Supplier No,1008260,suppliers.vendor_name,CENPTE,
+vendor_lookup,Supplier No,1008260,suppliers.vendor_currency,USD,
+vendor_lookup,Supplier No,1008260,suppliers.vendor_inc_code,FOB,
+vendor_lookup,Supplier No,1008260,suppliers.vendor_incoterm,FREE ON BOARD,
+pr_default,Currency,USD,pr.currency,USD,PR currency follows the vendor/document currency.
+incoterm_lookup,Incoterm Code,FOB,pr.incoterm_code,FOB,Purchase/freight terms code carried to the PR.
+incoterm_lookup,Incoterm Code,FOB,pr.incoterm_text,FREE ON BOARD,Expanded incoterm description.
+country_lookup,Country of Origin,Bangladesh,items.country_of_origin,BGD,
+country_lookup,Country of Origin,China,items.country_of_origin,CHN,
+port_lookup,Port of Departure,CHITTAGONG,shipments.port_of_loading,CGP,
+port_lookup,Lading Port,Chittagong - Bangladesh,shipments.port_of_loading,CGP,
+port_lookup,Port of Departure,SHANDONG-QINGDAO,shipments.port_of_loading,TAO,
+destination_lookup,Destination Location,United Kingdom,shipments.port_of_discharge,SOU,
+destination_lookup,Destination Location,United Kingdom,shipments.final_destination,UKG,
+season_lookup,Season,SS27,pr.season,SS27,
+season_lookup,Season,AW26,pr.season,AW26,
+season_lookup,Season,AW,pr.season,AW26,Raj POs print only 'AW' as the season code; combine with the year shown in the product description (e.g. 'AW26 FF SKIRT').
+factory_lookup,Factory No,41098223,items.factory_id,FCTBD1,Map the printed factory number to the internal factory code.
+factory_lookup,Factory No,36229061,items.factory_id,FCTCN1,
+factory_lookup,Factory No,36229609,items.factory_id,FCTCN2,

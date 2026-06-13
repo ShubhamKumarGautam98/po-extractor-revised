@@ -1,0 +1,153 @@
+{
+  "status": "needs_review",
+  "purchase_order": {
+    "source_file": "raj_461-38901.pdf",
+    "header": {
+      "action": "NEW",
+      "customer_code": "RAJ",
+      "po_num": "461-38901",
+      "div_code": "RJI"
+    },
+    "pr": {
+      "issue_date": "14-APR-2026",
+      "currency": "USD",
+      "incoterm_code": "FOB",
+      "incoterm_text": "FREE ON BOARD",
+      "season": "AW26"
+    },
+    "suppliers": [
+      {
+        "supplier_id": "1",
+        "vendor_code": "RAJLTD",
+        "vendor_name": "Raj Limited",
+        "vendor_currency": "USD",
+        "vendor_inc_code": "FOB",
+        "vendor_incoterm": "FREE ON BOARD"
+      }
+    ],
+    "items": [
+      {
+        "item_id": "1",
+        "supplier_id": "1",
+        "style_no": "JL627409",
+        "shipment_id": "461-38901",
+        "country_of_origin": "BGD",
+        "price": "9.62",
+        "factory_id": "",
+        "color": "BLACK",
+        "size_id": "10"
+      },
+      {
+        "item_id": "2",
+        "supplier_id": "1",
+        "style_no": "JL627409",
+        "shipment_id": "461-38901",
+        "country_of_origin": "BGD",
+        "price": "9.62",
+        "factory_id": "",
+        "color": "BLACK",
+        "size_id": "12"
+      },
+      {
+        "item_id": "3",
+        "supplier_id": "1",
+        "style_no": "JL627409",
+        "shipment_id": "461-38901",
+        "country_of_origin": "BGD",
+        "price": "9.62",
+        "factory_id": "",
+        "color": "BLACK",
+        "size_id": "8"
+      },
+      {
+        "item_id": "4",
+        "supplier_id": "1",
+        "style_no": "JL627409",
+        "shipment_id": "461-38901",
+        "country_of_origin": "BGD",
+        "price": "9.62",
+        "factory_id": "",
+        "color": "BLACK",
+        "size_id": "14"
+      },
+      {
+        "item_id": "5",
+        "supplier_id": "1",
+        "style_no": "JL627409",
+        "shipment_id": "461-38901",
+        "country_of_origin": "BGD",
+        "price": "9.62",
+        "factory_id": "",
+        "color": "BLACK",
+        "size_id": "16"
+      }
+    ],
+    "shipments": [
+      {
+        "shipment_id": "1",
+        "port_of_loading": "CGP",
+        "port_of_discharge": "SOU",
+        "final_destination": "UKG"
+      }
+    ],
+    "prepacks": [
+      {
+        "prepack_id": "1",
+        "details": [
+          {
+            "id": "1",
+            "size_id": "10",
+            "pack_color": "RATIO PACK"
+          },
+          {
+            "id": "2",
+            "size_id": "12",
+            "pack_color": "RATIO PACK"
+          },
+          {
+            "id": "3",
+            "size_id": "8",
+            "pack_color": "RATIO PACK"
+          },
+          {
+            "id": "4",
+            "size_id": "14",
+            "pack_color": "RATIO PACK"
+          },
+          {
+            "id": "5",
+            "size_id": "16",
+            "pack_color": "RATIO PACK"
+          }
+        ]
+      }
+    ]
+  },
+  "issues": [
+    {
+      "section": "items",
+      "field": "factory_id",
+      "message": "items[0].factory_id is missing or empty"
+    },
+    {
+      "section": "items",
+      "field": "factory_id",
+      "message": "items[1].factory_id is missing or empty"
+    },
+    {
+      "section": "items",
+      "field": "factory_id",
+      "message": "items[2].factory_id is missing or empty"
+    },
+    {
+      "section": "items",
+      "field": "factory_id",
+      "message": "items[3].factory_id is missing or empty"
+    },
+    {
+      "section": "items",
+      "field": "factory_id",
+      "message": "items[4].factory_id is missing or empty"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "required_header_fields": ["action", "customer_code", "po_num", "div_code"],
+  "required_pr_fields": ["currency", "incoterm_code", "incoterm_text", "season"],
+  "required_supplier_fields": ["vendor_code", "vendor_name", "vendor_currency", "vendor_inc_code", "vendor_incoterm"],
+  "required_item_fields": ["style_no", "country_of_origin", "price", "factory_id", "color", "size_id"],
+  "required_shipment_fields": ["port_of_loading", "port_of_discharge", "final_destination"]
+}

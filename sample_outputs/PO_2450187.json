@@ -1,0 +1,354 @@
+{
+  "status": "needs_review",
+  "purchase_order": {
+    "source_file": "brightkids_2450187.pdf",
+    "header": {
+      "action": "NEW",
+      "customer_code": "BRIGHT",
+      "po_num": "2450187",
+      "div_code": "BKD"
+    },
+    "pr": {
+      "issue_date": "",
+      "currency": "USD",
+      "incoterm_code": "FOB",
+      "incoterm_text": "FREE ON BOARD",
+      "season": "SS27"
+    },
+    "suppliers": [
+      {
+        "supplier_id": "1",
+        "vendor_code": "BKDS01",
+        "vendor_name": "BrightKids Sourcing Ltd",
+        "vendor_currency": "USD",
+        "vendor_inc_code": "FOB",
+        "vendor_incoterm": "FREE ON BOARD"
+      }
+    ],
+    "items": [
+      {
+        "item_id": "1",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "3-4Y"
+      },
+      {
+        "item_id": "2",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "4-5Y"
+      },
+      {
+        "item_id": "3",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "5-6Y"
+      },
+      {
+        "item_id": "4",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "6-7Y"
+      },
+      {
+        "item_id": "5",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "7-8Y"
+      },
+      {
+        "item_id": "6",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "8-9Y"
+      },
+      {
+        "item_id": "7",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "9-10Y"
+      },
+      {
+        "item_id": "8",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "10-11Y"
+      },
+      {
+        "item_id": "9",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "11-12Y"
+      },
+      {
+        "item_id": "10",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "12-13Y"
+      },
+      {
+        "item_id": "11",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "13-14Y"
+      },
+      {
+        "item_id": "12",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "14-15Y"
+      },
+      {
+        "item_id": "13",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "15-16Y"
+      },
+      {
+        "item_id": "14",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "3-4Y"
+      },
+      {
+        "item_id": "15",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "4-5Y"
+      },
+      {
+        "item_id": "16",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "5-6Y"
+      },
+      {
+        "item_id": "17",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "6-7Y"
+      },
+      {
+        "item_id": "18",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "7-8Y"
+      },
+      {
+        "item_id": "19",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "8-9Y"
+      },
+      {
+        "item_id": "20",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "9-10Y"
+      },
+      {
+        "item_id": "21",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "10-11Y"
+      },
+      {
+        "item_id": "22",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "11-12Y"
+      },
+      {
+        "item_id": "23",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "12-13Y"
+      },
+      {
+        "item_id": "24",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "13-14Y"
+      },
+      {
+        "item_id": "25",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "14-15Y"
+      },
+      {
+        "item_id": "26",
+        "supplier_id": "1",
+        "style_no": "4320-51892-6103-007",
+        "shipment_id": "2450187",
+        "country_of_origin": "BGD",
+        "price": "5.85",
+        "factory_id": "FCTBD1",
+        "color": "FOREST GREEN",
+        "size_id": "15-16Y"
+      }
+    ],
+    "shipments": [
+      {
+        "shipment_id": "1",
+        "port_of_loading": "CGP",
+        "port_of_discharge": "",
+        "final_destination": ""
+      },
+      {
+        "shipment_id": "2",
+        "port_of_loading": "CGP",
+        "port_of_discharge": "",
+        "final_destination": ""
+      }
+    ],
+    "prepacks": []
+  },
+  "issues": [
+    {
+      "section": "shipments",
+      "field": "port_of_discharge",
+      "message": "shipments[0].port_of_discharge is missing or empty"
+    },
+    {
+      "section": "shipments",
+      "field": "final_destination",
+      "message": "shipments[0].final_destination is missing or empty"
+    },
+    {
+      "section": "shipments",
+      "field": "port_of_discharge",
+      "message": "shipments[1].port_of_discharge is missing or empty"
+    },
+    {
+      "section": "shipments",
+      "field": "final_destination",
+      "message": "shipments[1].final_destination is missing or empty"
+    }
+  ]
+}

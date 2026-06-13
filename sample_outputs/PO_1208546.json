@@ -1,0 +1,218 @@
+{
+  "status": "needs_review",
+  "purchase_order": {
+    "source_file": "george_1208546.pdf",
+    "header": {
+      "action": "NEW",
+      "customer_code": "GEORGE",
+      "po_num": "1208546",
+      "div_code": "KAE"
+    },
+    "pr": {
+      "issue_date": "",
+      "currency": "USD",
+      "incoterm_code": "FOB",
+      "incoterm_text": "FREE ON BOARD",
+      "season": "AW26"
+    },
+    "suppliers": [
+      {
+        "supplier_id": "1",
+        "vendor_code": "THVN46",
+        "vendor_name": "ThreadHaven Knits",
+        "vendor_currency": "USD",
+        "vendor_inc_code": "FOB",
+        "vendor_incoterm": "FREE ON BOARD"
+      }
+    ],
+    "items": [
+      {
+        "item_id": "1",
+        "supplier_id": "1",
+        "style_no": "5810-30338-4877-003",
+        "shipment_id": "1208546",
+        "country_of_origin": "CHN",
+        "price": "7.42",
+        "factory_id": "FCTCN2",
+        "color": "LILAC",
+        "size_id": "4-5Y"
+      },
+      {
+        "item_id": "2",
+        "supplier_id": "1",
+        "style_no": "5810-30338-4877-003",
+        "shipment_id": "1208546",
+        "country_of_origin": "CHN",
+        "price": "7.42",
+        "factory_id": "FCTCN2",
+        "color": "LILAC",
+        "size_id": "5-6Y"
+      },
+      {
+        "item_id": "3",
+        "supplier_id": "1",
+        "style_no": "5810-30338-4877-003",
+        "shipment_id": "1208546",
+        "country_of_origin": "CHN",
+        "price": "7.42",
+        "factory_id": "FCTCN2",
+        "color": "LILAC",
+        "size_id": "6-7Y"
+      },
+      {
+        "item_id": "4",
+        "supplier_id": "1",
+        "style_no": "5810-30338-4877-003",
+        "shipment_id": "1208546",
+        "country_of_origin": "CHN",
+        "price": "7.42",
+        "factory_id": "FCTCN2",
+        "color": "LILAC",
+        "size_id": "7-8Y"
+      },
+      {
+        "item_id": "5",
+        "supplier_id": "1",
+        "style_no": "5810-30338-4877-003",
+        "shipment_id": "1208546",
+        "country_of_origin": "CHN",
+        "price": "7.42",
+        "factory_id": "FCTCN2",
+        "color": "LILAC",
+        "size_id": "8-9Y"
+      },
+      {
+        "item_id": "6",
+        "supplier_id": "1",
+        "style_no": "5810-30338-4877-003",
+        "shipment_id": "1208546",
+        "country_of_origin": "CHN",
+        "price": "7.42",
+        "factory_id": "FCTCN2",
+        "color": "LILAC",
+        "size_id": "9-10Y"
+      },
+      {
+        "item_id": "7",
+        "supplier_id": "1",
+        "style_no": "5810-30338-4877-003",
+        "shipment_id": "1208546",
+        "country_of_origin": "CHN",
+        "price": "7.42",
+        "factory_id": "FCTCN2",
+        "color": "LILAC",
+        "size_id": "10-11Y"
+      },
+      {
+        "item_id": "8",
+        "supplier_id": "1",
+        "style_no": "5810-30338-4877-003",
+        "shipment_id": "1208546",
+        "country_of_origin": "CHN",
+        "price": "7.42",
+        "factory_id": "FCTCN2",
+        "color": "LILAC",
+        "size_id": "11-12Y"
+      },
+      {
+        "item_id": "9",
+        "supplier_id": "1",
+        "style_no": "5810-30338-4877-003",
+        "shipment_id": "1208546",
+        "country_of_origin": "CHN",
+        "price": "7.42",
+        "factory_id": "FCTCN2",
+        "color": "LILAC",
+        "size_id": "12-13Y"
+      },
+      {
+        "item_id": "10",
+        "supplier_id": "1",
+        "style_no": "5810-30338-4877-003",
+        "shipment_id": "1208546",
+        "country_of_origin": "CHN",
+        "price": "7.42",
+        "factory_id": "FCTCN2",
+        "color": "LILAC",
+        "size_id": "13-14Y"
+      }
+    ],
+    "shipments": [
+      {
+        "shipment_id": "1",
+        "port_of_loading": "TAO",
+        "port_of_discharge": "",
+        "final_destination": ""
+      }
+    ],
+    "prepacks": [
+      {
+        "prepack_id": "1",
+        "details": [
+          {
+            "id": "1",
+            "size_id": "4-5Y",
+            "pack_color": "1"
+          },
+          {
+            "id": "2",
+            "size_id": "5-6Y",
+            "pack_color": "1"
+          },
+          {
+            "id": "3",
+            "size_id": "6-7Y",
+            "pack_color": "1"
+          },
+          {
+            "id": "4",
+            "size_id": "7-8Y",
+            "pack_color": "1"
+          },
+          {
+            "id": "5",
+            "size_id": "8-9Y",
+            "pack_color": "1"
+          },
+          {
+            "id": "6",
+            "size_id": "9-10Y",
+            "pack_color": "1"
+          },
+          {
+            "id": "7",
+            "size_id": "10-11Y",
+            "pack_color": "1"
+          },
+          {
+            "id": "8",
+            "size_id": "11-12Y",
+            "pack_color": "1"
+          },
+          {
+            "id": "9",
+            "size_id": "12-13Y",
+            "pack_color": "1"
+          },
+          {
+            "id": "10",
+            "size_id": "13-14Y",
+            "pack_color": "1"
+          }
+        ]
+      }
+    ]
+  },
+  "issues": [
+    {
+      "section": "shipments",
+      "field": "port_of_discharge",
+      "message": "shipments[0].port_of_discharge is missing or empty"
+    },
+    {
+      "section": "shipments",
+      "field": "final_destination",
+      "message": "shipments[0].final_destination is missing or empty"
+    }
+  ]
+}
