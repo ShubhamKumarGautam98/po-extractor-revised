@@ -8,7 +8,7 @@ covers both the Node.js and Python implementations.
 ## Why This Revision Exists
 
 The original submission used n8n as the pipeline orchestration layer, with
-an AI model performing extraction inside an HTTP
+an AI model  performing extraction inside an HTTP
 Request node. I chose that approach with a non-developer, business-facing
 audience in mind — a visual pipeline that's cheap to run and easy for an
 operations team to understand and extend without writing code.
@@ -53,12 +53,28 @@ with and without this function present). It's implemented generically so
 that adding a row of this type in future requires no code change in either
 implementation.
 
-**Known limitation**: the spec describes composite-key lookup rows (matching
-on, e.g., `Style No + Season` together). No row in the current
+**Composite-key lookups**: the spec describes rows that match on more than
+one fact at once (e.g. `Style No + Season` → `AD627488|AW26`, "only apply
+the row when **all** key parts match"). No row in the current
 `transformation_data.csv` uses this form, so it isn't exercised by the 5
-sample POs. `apply_lookup()` / `applyLookup()` currently matches a single
-`source_value`. Supporting a `|`-delimited composite key would be a small,
-contained extension in either language if a future CSV row needed it.
+sample POs - but the mechanism is **implemented and tested** in both
+languages, not just documented as a gap.
+
+`apply_lookup()` / `applyLookup()` now accepts an additional
+`facts_by_label` context — a dict mapping CSV `source_label` strings
+(`"Style No"`, `"Season"`, `"Vendor No"`, etc.) to the corresponding
+extracted values. When a rule's `source_value` contains `|`, both
+`source_value` and `source_label` are split on `|`, and **every** part must
+match the corresponding entry in `facts_by_label` (case-insensitive) for the
+rule to apply.
+
+This is purely additive: for any rule without `|` (i.e. all 50 rows in the
+current CSV), matching behaviour is byte-for-byte identical to before -
+verified by re-running all 5 sample POs and confirming identical output.
+A dedicated test in each implementation uses a synthetic rule set built from
+the spec's own worked example (`"Style No|Season"` → `"AD627488|AW26"`) to
+verify: a full match applies the rule, a partial match does not, matching is
+case-insensitive, and existing single-key rules are unaffected.
 
 ---
 
@@ -204,7 +220,7 @@ parse and removes the need for that heuristic entirely.
 | Raj ratio-pack parsing | Node: positional arrays; Python: direct table rows | Single shared approach | `pdfplumber` has table detection `pdf-parse` lacks; kept as an honest, documented comparison rather than forcing parity |
 | Transformation config | CSV file (unchanged) | Hardcoded rules | Data-driven, editable without deployment |
 | Frontend | React + Vite (shared, unchanged) | Separate frontends | One frontend, auto-detects either backend |
-| Testing | Plain `assert` (Node) / `pytest` (Python) | Jest / unittest | 50 tests per implementation, no heavy framework dependency |
+| Testing | Plain `assert` (Node) / `pytest` (Python) | Jest / unittest | 54 tests per implementation, no heavy framework dependency |
 
 ---
 

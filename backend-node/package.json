@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "test": "node tests/transformer.test.js"
+    "test": "node tests/extractor.test.js && node tests/transformer.test.js && node tests/composite_lookup.test.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -14,5 +14,4 @@
     "express": "^4.21.1",
     "pdf-parse": "^2.4.5"
   }
-  
 }

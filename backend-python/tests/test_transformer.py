@@ -196,6 +196,66 @@ def test_extract_style_no_returns_empty_when_absent():
 
 
 # =====================================================================
+# Composite-key lookups (e.g. "Style No|Season" -> "AD627488|AW26")
+#
+# No row in transformation_data.csv currently uses this pattern, but the
+# spec describes it explicitly as a rule type the transformer must support
+# ("some rows match on more than one fact ... only apply the row when ALL
+# key parts match"). These tests use a synthetic rule set - matching the
+# spec's own worked example - to verify apply_lookup() handles it correctly.
+# =====================================================================
+
+_COMPOSITE_RULES = [
+    {
+        'rule_type': 'item_default',
+        'source_label': 'Style No|Season',
+        'source_value': 'AD627488|AW26',
+        'target_field': 'items.factory_id',
+        'target_value': 'HANFEI',
+        'notes': 'Composite-key example from the spec'
+    },
+    {
+        'rule_type': 'item_default',
+        'source_label': 'Style No|Season',
+        'source_value': 'OTHER123|SS27',
+        'target_field': 'items.factory_id',
+        'target_value': 'WRONG',
+        'notes': 'A different composite rule that should NOT match'
+    }
+]
+
+
+def test_composite_key_matches_when_all_parts_match():
+    facts_by_label = {'style no': 'AD627488', 'season': 'AW26'}
+    result = apply_lookup('item_default', '', _COMPOSITE_RULES, facts_by_label)
+    assert result['factory_id'] == 'HANFEI'
+
+
+def test_composite_key_does_not_match_when_one_part_differs():
+    facts_by_label = {'style no': 'AD627488', 'season': 'SS27'}
+    result = apply_lookup('item_default', '', _COMPOSITE_RULES, facts_by_label)
+    assert result == {}
+
+
+def test_composite_key_is_case_insensitive():
+    facts_by_label = {'style no': 'ad627488', 'season': 'aw26'}
+    result = apply_lookup('item_default', '', _COMPOSITE_RULES, facts_by_label)
+    assert result['factory_id'] == 'HANFEI'
+
+
+def test_single_key_lookup_unaffected_by_facts_by_label():
+    """Regression: passing facts_by_label must not change single-key matching."""
+    single_key_rules = [{
+        'rule_type': 'division_lookup', 'source_label': 'Customer',
+        'source_value': 'BRIGHT', 'target_field': 'header.div_code',
+        'target_value': 'BKD', 'notes': ''
+    }]
+    facts_by_label = {'style no': 'AD627488', 'season': 'AW26'}
+    result = apply_lookup('division_lookup', 'BRIGHT', single_key_rules, facts_by_label)
+    assert result['div_code'] == 'BKD'
+
+
+# =====================================================================
 # build_prepacks - ratio_packs vs prepacks input
 # =====================================================================
 

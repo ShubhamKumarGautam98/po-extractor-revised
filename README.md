@@ -183,8 +183,8 @@ implementation.
 
 ```bash
 # Node
-cd backend-node && npm test          # 50 passed
+cd backend-node && npm test          # 54 passed
 
 # Python
-cd backend-python && python -m pytest tests/ -v    # 50 passed
+cd backend-python && python -m pytest tests/ -v    # 54 passed
 ```

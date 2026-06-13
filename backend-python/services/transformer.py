@@ -58,22 +58,80 @@ def apply_item_defaults(rules):
     return result
 
 
-# -- Apply single-key lookup --
-def apply_lookup(rule_type, source_value, rules):
+# -- Build a label -> value map of extracted facts.
+# This lets composite-key rules (source_value containing "|") match on
+# multiple printed fields at once, e.g. a CSV row with
+# source_label = "Style No|Season" and source_value = "AD627488|AW26"
+# can be matched against facts['style_no'] and facts['season'] together.
+def build_facts_by_label(facts, customer_code):
+    return {
+        'document brand': facts.get('document_brand') or '',
+        'customer': customer_code or '',
+        'vendor no': facts.get('vendor_no') or '',
+        'supplier no': facts.get('supplier_no') or '',
+        'factory no': facts.get('factory_no') or '',
+        'style no': facts.get('style_no') or extract_style_no(facts) or '',
+        'season': facts.get('season') or '',
+        'currency': facts.get('currency') or '',
+        'country of origin': facts.get('country_of_origin') or '',
+        'port of departure': facts.get('port_of_departure') or '',
+        'lading port': facts.get('lading_port') or '',
+        'destination location': facts.get('destination_location') or '',
+        'incoterm code': (facts.get('incoterm') or 'FOB').strip()
+    }
+
+
+# -- Apply single-key OR composite-key lookup --
+#
+# Single-key (existing behaviour, unchanged): rule['source_value'] is
+# matched directly against source_value.
+#
+# Composite-key (new, additive): when rule['source_value'] contains "|",
+# it's split alongside rule['source_label'] on "|", and EVERY part must
+# match the corresponding fact in facts_by_label for the rule to apply, e.g.
+#   source_label = "Style No|Season", source_value = "AD627488|AW26"
+# matches only when facts_by_label['style no'] == 'ad627488' AND
+# facts_by_label['season'] == 'aw26'.
+#
+# This is purely additive: no row in the current transformation_data.csv
+# contains "|", so existing behaviour for all 50 rules is unchanged.
+def apply_lookup(rule_type, source_value, rules, facts_by_label=None):
     result = {}
-    source_value = (source_value or '').lower()
+    normalized_source_value = (source_value or '').lower()
+
+    facts_by_label = facts_by_label or {}
+    normalized_facts = {k.lower(): (v or '').lower() for k, v in facts_by_label.items()}
+
     for rule in rules:
-        if rule['rule_type'] == rule_type and rule['source_value'].lower() == source_value:
+        if rule['rule_type'] != rule_type:
+            continue
+
+        if '|' in rule['source_value']:
+            # Composite-key rule
+            value_parts = [v.strip().lower() for v in rule['source_value'].split('|')]
+            label_parts = [l.strip().lower() for l in (rule.get('source_label') or '').split('|')]
+
+            matches = (
+                len(value_parts) > 1 and
+                len(value_parts) == len(label_parts) and
+                all(normalized_facts.get(label_parts[i]) == val for i, val in enumerate(value_parts))
+            )
+        else:
+            # Single-key rule (existing behaviour)
+            matches = rule['source_value'].lower() == normalized_source_value
+
+        if matches:
             # strip section prefix (suppliers. / items. / shipments. / pr.)
             field_name = rule['target_field'].split('.')[-1]
             result[field_name] = rule['target_value']
+
     return result
 
 
 # -- Build HEADER section --
-def build_header(facts, rules, customer_code):
+def build_header(facts, rules, customer_code, facts_by_label):
     defaults = apply_header_defaults(rules)
-    div_lookup = apply_lookup('division_lookup', customer_code, rules)
+    div_lookup = apply_lookup('division_lookup', customer_code, rules, facts_by_label)
 
     return {
         'action': defaults.get('action', 'NEW'),
@@ -84,16 +142,16 @@ def build_header(facts, rules, customer_code):
 
 
 # -- Build PR section --
-def build_pr(facts, rules):
+def build_pr(facts, rules, facts_by_label):
     defaults = apply_pr_defaults(rules)
 
     # Season lookup - handles "AW" -> "AW26" edge case
     season_raw = facts.get('season') or ''
-    season_lookup = apply_lookup('season_lookup', season_raw, rules)
+    season_lookup = apply_lookup('season_lookup', season_raw, rules, facts_by_label)
 
     # Incoterm lookup
     incoterm_raw = (facts.get('incoterm') or '').strip()
-    incoterm_lookup = apply_lookup('incoterm_lookup', 'FOB', rules)
+    incoterm_lookup = apply_lookup('incoterm_lookup', 'FOB', rules, facts_by_label)
 
     return {
         'issue_date': facts.get('order_date') or '',
@@ -105,15 +163,15 @@ def build_pr(facts, rules):
 
 
 # -- Build SUPPLIERS section --
-def build_suppliers(facts, rules):
+def build_suppliers(facts, rules, facts_by_label):
     vendor_no = facts.get('vendor_no') or ''
     supplier_no = facts.get('supplier_no') or ''
 
     vendor_data = {}
     if vendor_no:
-        vendor_data = apply_lookup('vendor_lookup', vendor_no, rules)
+        vendor_data = apply_lookup('vendor_lookup', vendor_no, rules, facts_by_label)
     if supplier_no and not vendor_data:
-        vendor_data = apply_lookup('vendor_lookup', supplier_no, rules)
+        vendor_data = apply_lookup('vendor_lookup', supplier_no, rules, facts_by_label)
 
     return [{
         'supplier_id': '1',
@@ -133,9 +191,9 @@ def extract_style_no(facts):
 
 
 # -- Build ITEMS section --
-def build_items(facts, rules, po_number):
-    country_lookup = apply_lookup('country_lookup', facts.get('country_of_origin'), rules)
-    factory_lookup = apply_lookup('factory_lookup', facts.get('factory_no'), rules)
+def build_items(facts, rules, po_number, facts_by_label):
+    country_lookup = apply_lookup('country_lookup', facts.get('country_of_origin'), rules, facts_by_label)
+    factory_lookup = apply_lookup('factory_lookup', facts.get('factory_no'), rules, facts_by_label)
 
     colour = (facts.get('colour') or '').upper()
     country_code = country_lookup.get('country_of_origin') or facts.get('country_of_origin') or ''
@@ -189,12 +247,12 @@ def build_items(facts, rules, po_number):
 
 
 # -- Build SHIPMENTS section --
-def build_shipments(facts, rules):
+def build_shipments(facts, rules, facts_by_label):
     port_raw = facts.get('port_of_departure') or facts.get('lading_port') or ''
     dest_raw = facts.get('destination_location') or ''
 
-    port_lookup = apply_lookup('port_lookup', port_raw, rules)
-    dest_lookup = apply_lookup('destination_lookup', dest_raw, rules)
+    port_lookup = apply_lookup('port_lookup', port_raw, rules, facts_by_label)
+    dest_lookup = apply_lookup('destination_lookup', dest_raw, rules, facts_by_label)
 
     shipments = []
     deliveries = facts.get('deliveries') or []
@@ -267,11 +325,14 @@ def transform(extraction_result):
 
     customer_code = detect_customer(facts, rules)
 
-    header = build_header(facts, rules, customer_code)
-    pr = build_pr(facts, rules)
-    suppliers = build_suppliers(facts, rules)
-    items = build_items(facts, rules, header['po_num'])
-    shipments = build_shipments(facts, rules)
+    # Build a label -> value context for composite-key lookups
+    facts_by_label = build_facts_by_label(facts, customer_code)
+
+    header = build_header(facts, rules, customer_code, facts_by_label)
+    pr = build_pr(facts, rules, facts_by_label)
+    suppliers = build_suppliers(facts, rules, facts_by_label)
+    items = build_items(facts, rules, header['po_num'], facts_by_label)
+    shipments = build_shipments(facts, rules, facts_by_label)
     prepacks = build_prepacks(facts)
 
     return {
