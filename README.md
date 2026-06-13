@@ -76,38 +76,13 @@ two implementations are true drop-in replacements for each other.
 
 ## Why Two Implementations?
 
-My original submission used n8n with AI-based extraction. I chose that
-approach with a non-developer, business-facing audience in mind — a visual
-pipeline that's cheap to run and easy for an operations team to understand
-and extend without writing code.
+My original submission used n8n with AI-based extraction. I chose that approach with a non-developer, business-facing audience in mind — a visual pipeline that's easy to run and for an operations team to understand and extend without writing code.
+After review, the team's feedback was that the assessment is meant to evaluate the logic — extraction, transformation, and validation — directly within application code, rather than through an automation platform. As advised by HR I am hereby submitting two options for backend.
+Since the two running files will become a bulky folder, so I developed one frontend and two complete backend implementations — one in Node.js, one in Python — each containing the full extraction, transformation, and validation logic directly in code, with no external platform involved.
 
-After review, the team's feedback was that the assessment is meant to
-evaluate the logic — extraction, transformation, and validation — directly
-within application code, rather than through an automation platform.
-
-Taking that feedback on board, my honest position was: I genuinely wasn't
-sure which language the team would want to see this implemented in. Rather
-than guess, I built **two complete backend implementations** — one in
-Node.js, one in Python — each containing the full extraction, transformation,
-and validation logic directly in code, with no external platform involved.
-Both reuse the **same React frontend** I built originally, just pointed at a
-different backend.
-
-This felt like the most useful way to respond to the feedback: instead of a
-single rewrite that might still miss the mark on language preference, two
-working implementations let the team see the actual logic in both, in
-whichever language is more relevant to how this would be evaluated or
-maintained — and hopefully gives a fuller picture of what I can bring to the
-team.
-
-A side effect worth mentioning: building both surfaced a genuine technical
-comparison between the two PDF libraries. `pdfplumber`'s table extraction
-handles the hardest layout (Raj's ratio-pack table) more
-naturally than `pdf-parse`'s text-stream output. See `DESIGN_NOTES.md` for
-the full writeup of this tradeoff.
-
----
-
+To make this practical without asking the team to juggle two separate apps, both implementations reuse the same React frontend I built originally — it auto-detects whichever backend is running and points itself at that one. So "two implementations" doesn't mean two products to evaluate; it's one UI, with a choice of two interchangeable engines behind it.
+This felt like the most useful way to respond to the feedback: instead of a single rewrite that might still miss the mark on language preference, two working implementations let the team see the actual logic in both, in whichever language is more relevant to how this would be evaluated or maintained — and hopefully gives a fuller picture of what I can bring to the team.
+A side effect worth mentioning: building both surfaced a genuine technical comparison between the two PDF libraries. pdfplumber's table extraction handles the hardest layout (Raj's ratio-pack table) more naturally than pdf-parse's text-stream output. See DESIGN_NOTES.md for the full writeup of this tradeoff.
 ---
 
 ## How Extraction Works (No AI)
