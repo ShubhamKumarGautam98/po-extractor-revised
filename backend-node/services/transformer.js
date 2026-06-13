@@ -54,6 +54,16 @@ function applyPRDefaults(rules) {
   return result;
 }
 
+// -- Apply ITEM defaults --
+function applyItemDefaults(rules) {
+  const result = {};
+  const defaultRules = rules.filter(r => r.rule_type === 'item_default');
+  for (const rule of defaultRules) {
+    result[rule.target_field.replace('items.', '')] = rule.target_value;
+  }
+  return result;
+}
+
 // -- Apply single-key lookup --
 function applyLookup(ruleType, sourceValue, rules) {
   const result = {};
@@ -174,6 +184,19 @@ function buildItems(facts, rules, poNumber) {
         color:              colour,
         size_id:            item.size || ''
       });
+    }
+  }
+
+  // -- Apply item_default rules as fallback for any field still empty --
+  // (mirrors header_default / pr_default - generic, data-driven, currently
+  // a no-op since transformation_data.csv has no item_default rows, but
+  // a CSV row of this type would now take effect without a code change)
+  const itemDefaults = applyItemDefaults(rules);
+  for (const item of allItems) {
+    for (const [field, value] of Object.entries(itemDefaults)) {
+      if (!item[field]) {
+        item[field] = value;
+      }
     }
   }
 

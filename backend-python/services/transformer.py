@@ -49,6 +49,15 @@ def apply_pr_defaults(rules):
     return result
 
 
+# -- Apply ITEM defaults --
+def apply_item_defaults(rules):
+    result = {}
+    for rule in rules:
+        if rule['rule_type'] == 'item_default':
+            result[rule['target_field'].replace('items.', '')] = rule['target_value']
+    return result
+
+
 # -- Apply single-key lookup --
 def apply_lookup(rule_type, source_value, rules):
     result = {}
@@ -165,6 +174,16 @@ def build_items(facts, rules, po_number):
                 'size_id': item.get('size', '')
             })
             item_id += 1
+
+    # -- Apply item_default rules as fallback for any field still empty --
+    # (mirrors header_default / pr_default - generic, data-driven, currently
+    # a no-op since transformation_data.csv has no item_default rows, but
+    # a CSV row of this type would now take effect without a code change)
+    item_defaults = apply_item_defaults(rules)
+    for item in all_items:
+        for field, value in item_defaults.items():
+            if not item.get(field):
+                item[field] = value
 
     return all_items
 

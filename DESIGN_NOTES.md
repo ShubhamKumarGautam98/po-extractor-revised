@@ -40,8 +40,18 @@ identical — the Python version is a near line-for-line port. Both read
   changes to the transformation logic itself
 
 Rule types supported: `source_detection`, `header_default`, `pr_default`,
-`division_lookup`, `vendor_lookup`, `incoterm_lookup`, `country_lookup`,
-`port_lookup`, `destination_lookup`, `season_lookup`, `factory_lookup`.
+`item_default`, `division_lookup`, `vendor_lookup`, `incoterm_lookup`,
+`country_lookup`, `port_lookup`, `destination_lookup`, `season_lookup`,
+`factory_lookup`.
+
+`item_default` (`apply_item_defaults` / `applyItemDefaults`) mirrors
+`header_default`/`pr_default` exactly — it applies a constant to any item
+field that's still empty after extraction and lookups. The current
+`transformation_data.csv` has zero `item_default` rows, so this is currently
+a no-op (verified: all 5 sample POs produce byte-for-byte identical output
+with and without this function present). It's implemented generically so
+that adding a row of this type in future requires no code change in either
+implementation.
 
 **Known limitation**: the spec describes composite-key lookup rows (matching
 on, e.g., `Style No + Season` together). No row in the current
