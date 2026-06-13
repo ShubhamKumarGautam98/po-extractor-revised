@@ -16,7 +16,8 @@ Both implementations:
   transformation engine (ported 1:1 between the two languages)
 - Validate against the same `field_schema.json`
 - Produce **byte-for-byte identical JSON output** for all 5 sample POs
-- Pass **50 unit tests** each
+- Pass **54 unit tests** each (108 total), including dedicated tests for
+  composite-key CSV lookups using the spec's own worked example
 - Require zero configuration, zero API keys, zero external services
 
 Setup instructions for both implementations are below; see `DESIGN_NOTES.md`
