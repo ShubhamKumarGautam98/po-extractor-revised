@@ -85,9 +85,7 @@ After review, the team's feedback was that the assessment is meant to
 evaluate the logic — extraction, transformation, and validation — directly
 within application code, rather than through an automation platform.
 
-Taking that feedback on board, my honest position was: I genuinely wasn't
-sure which language the team would want to see this implemented in. Rather
-than guess, I built **two complete backend implementations** — one in
+Taking that feedback on board, I built **two complete backend implementations** — one in
 Node.js, one in Python — each containing the full extraction, transformation,
 and validation logic directly in code, with no external platform involved.
 Both reuse the **same React frontend** I built originally, just pointed at a
