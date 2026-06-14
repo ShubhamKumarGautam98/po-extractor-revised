@@ -77,7 +77,7 @@ two implementations are true drop-in replacements for each other.
 ## Why Two Implementations?
 
 My original submission used n8n with AI-based extraction. I chose that approach with a non-developer, business-facing audience in mind — a visual pipeline that's easy to run and for an operations team to understand and extend without writing code.
-After review, the team's feedback was that the assessment is meant to evaluate the logic — extraction, transformation, and validation — directly within application code, rather than through an automation platform. As advised by HR I am hereby submitting two options for backend.
+After review, the team's feedback was that the assessment is meant to evaluate the logic — extraction, transformation, and validation — directly within application code, rather than through an automation platform. HR also mentioned that submitting two different logic implementations was an option. so rather than guess which language to use, I built both
 Since the two running files will become a bulky folder, so I developed one frontend and two complete backend implementations — one in Node.js, one in Python — each containing the full extraction, transformation, and validation logic directly in code, with no external platform involved.
 
 To make this practical without asking the team to juggle two separate apps, both implementations reuse the same React frontend I built originally — it auto-detects whichever backend is running and points itself at that one. So "two implementations" doesn't mean two products to evaluate; it's one UI, with a choice of two interchangeable engines behind it.
